@@ -91,6 +91,8 @@
 		6AB5B37D2759C5E60031239E /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B32A2759C5E60031239E /* AFURLRequestSerialization.m */; };
 		6AB5B37E2759C5E60031239E /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B32C2759C5E60031239E /* AFNetworkReachabilityManager.m */; };
 		6AB5B37F2759C5E60031239E /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B32D2759C5E60031239E /* AFSecurityPolicy.m */; };
+		6AB5B3832759CBB40031239E /* LJGestureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B3812759CBB40031239E /* LJGestureView.m */; };
+		6AB5B3842759CBB40031239E /* LJGestureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AB5B3822759CBB40031239E /* LJGestureView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -253,6 +255,9 @@
 		6AB5B32D2759C5E60031239E /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
 		6AB5B32E2759C5E60031239E /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCompatibilityMacros.h; sourceTree = "<group>"; };
 		6AB5B32F2759C5E60031239E /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		6AB5B3802759CBB40031239E /* LJGestureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJGestureView.h; sourceTree = "<group>"; };
+		6AB5B3812759CBB40031239E /* LJGestureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJGestureView.m; sourceTree = "<group>"; };
+		6AB5B3822759CBB40031239E /* LJGestureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJGestureView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,11 +382,14 @@
 		6AB5B24D2759C5E50031239E /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				6AB5B3802759CBB40031239E /* LJGestureView.h */,
+				6AB5B3812759CBB40031239E /* LJGestureView.m */,
+				6AB5B3822759CBB40031239E /* LJGestureView.xib */,
 				6AB5B24E2759C5E50031239E /* LJButton_Google.h */,
-				6AB5B24F2759C5E50031239E /* LJSlider.m */,
-				6AB5B2502759C5E50031239E /* sliderValue@3x.png */,
 				6AB5B2512759C5E50031239E /* LJButton_Google.m */,
 				6AB5B2522759C5E50031239E /* LJSlider.h */,
+				6AB5B24F2759C5E50031239E /* LJSlider.m */,
+				6AB5B2502759C5E50031239E /* sliderValue@3x.png */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -706,6 +714,7 @@
 				6AB5B34D2759C5E60031239E /* direct2@2x.png in Resources */,
 				6AB5B3482759C5E60031239E /* LJGuideView.xib in Resources */,
 				6AB5B2262759C3560031239E /* Assets.xcassets in Resources */,
+				6AB5B3842759CBB40031239E /* LJGestureView.xib in Resources */,
 				6AB5B34F2759C5E60031239E /* QRWhiteLine@2x.png in Resources */,
 				6AB5B3542759C5E60031239E /* cor2.png in Resources */,
 				6AB5B34C2759C5E60031239E /* direct4@2x.png in Resources */,
@@ -733,6 +742,7 @@
 				6AB5B3772759C5E60031239E /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				6AB5B33F2759C5E60031239E /* LJSheetAlertView.m in Sources */,
 				6AB5B3372759C5E60031239E /* RegularTools.m in Sources */,
+				6AB5B3832759CBB40031239E /* LJGestureView.m in Sources */,
 				6AB5B3642759C5E60031239E /* NSTimer+LJ.m in Sources */,
 				6AB5B36C2759C5E60031239E /* SVProgressHUD.m in Sources */,
 				6AB5B36A2759C5E60031239E /* SVRadialGradientLayer.m in Sources */,
