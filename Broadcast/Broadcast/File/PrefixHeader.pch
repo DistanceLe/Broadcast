@@ -1,0 +1,58 @@
+//
+//  PrefixHeader.pch
+//  LJColumnChart
+//
+//  Created by LiJie on 2017/2/27.
+//  Copyright © 2017年 LiJie. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "LJLanguage.h"
+
+#import "Common.h"
+#import "ConstString.h"
+#import "HYDataConst.h"
+
+#import "DebugAndRelease.h"
+
+
+#import "LJImageTools.h"
+
+#import "NSObject+LJ.h"
+
+#import "UIImage+LJ.h"
+#import "UIView+LJ.h"
+#import "UIButton+LJ.h"
+#import "NSNotificationCenter+LJ.h"
+#import "NSTimer+LJ.h"
+#import "UITableViewCell+LJ.h"
+
+
+#import "LJInfoAlert.h"
+#import "LJAlertView.h"
+#import "LJSheetAlertView.h"
+
+#import "LJButton_Google.h"
+
+
+#import "UILabel+LJ.h"
+#import "HYDataManager.h"
+
+
+//#import "HYGuideButton.h"
+
+//#import "UITableView+LJ.h"
+//#import "NSManagedObject+LJ.h"
+//#import "HYDataManager.h"
+//#import "HYMeshManager.h"
+//#import "HYExtraManager.h"
+//#import "HYRequestManager.h"
+
+
+#endif
+#endif /* PrefixHeader_pch */
