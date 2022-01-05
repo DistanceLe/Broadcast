@@ -16,12 +16,9 @@
 
 @property(nonatomic, assign)CGPoint     currentTouchPoint;
 @property(nonatomic, assign)BOOL        isTouchBegin;
-@property(nonatomic, assign)BOOL        isTouchContinue;
 @property(nonatomic, assign)BOOL        isOtherGesture;
 @property(nonatomic, assign)double      touchBeginTime;
 
-@property(nonatomic, strong)NSMutableDictionary* backLayersDic;
-@property(nonatomic, strong)NSMutableArray* animationsArray;
 @property(nonatomic, strong)NSMutableArray* backLayersArray;
 
 @end
@@ -49,9 +46,7 @@
 -(void)beginAnimation{
     [self.circleEffectColor setFill];
     if (1) {
-        if (!self.backLayersDic) {
-            self.backLayersDic = [NSMutableDictionary dictionary];
-            self.animationsArray = [NSMutableArray array];
+        if (!self.backLayersArray) {
             self.backLayersArray = [NSMutableArray array];
         }
         
@@ -102,12 +97,13 @@
 #pragma mark - ================ 动画代理 ==================
 -(void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     if (flag) {
-        //        NSLog(@"停止动画==============");
+        DLog(@"停止动画==============");
         if (!self.backLayersArray.count || (self.backLayersArray.count == 1 && self.isTouchBegin)) {
             return;
         }
         CALayer* backLayer = self.backLayersArray.firstObject;
         if (backLayer && backLayer.mask) {
+            DLog(@"移除最旧的 图层, %ld", self.backLayersArray.count);
             [backLayer.mask removeAllAnimations];
             backLayer.mask=nil;
             [backLayer removeFromSuperlayer];
@@ -117,11 +113,11 @@
 }
 -(void)customTrackingEnd{
     self.isTouchBegin=NO;
-    self.isTouchContinue = NO;
     double endTouchTime = [[NSDate date]timeIntervalSince1970];
     if ((endTouchTime - self.touchBeginTime) < self.circleEffectTime) {
         return;
     }
+    DLog(@"移除所有的 动画图层, %ld", self.backLayersArray.count);
     if (self.backLayersArray.count) {
         NSArray* tempArray = [NSArray arrayWithArray:self.backLayersArray];
         for (CALayer* backLayer in tempArray) {
@@ -139,7 +135,7 @@
         self.currentTouchPoint=[touch locationInView:self];
         self.isTouchBegin=YES;
         self.touchBeginTime = [[NSDate date]timeIntervalSince1970];
-        //DLog(@"😝开始动画");
+        DLog(@"😝开始动画");
         [self beginAnimation];
     }
     return [super beginTrackingWithTouch:touch withEvent:event];
@@ -147,9 +143,8 @@
 
 -(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     
+    DLog(@"continue");
     if (touch.view == self) {
-        //        NSLog(@"==============");
-        self.isTouchContinue=YES;
         CGPoint point=[touch locationInView:self];
         CGFloat offset=70;
         if (point.x<-offset || point.x>self.lj_width+offset || point.y<-offset || point.y>self.lj_height+offset) {
@@ -161,7 +156,7 @@
 }
 
 -(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
-    
+    DLog(@"end");
     if (touch.view == self) {
         [self customTrackingEnd];
     }
@@ -169,13 +164,14 @@
 }
 
 -(void)cancelTrackingWithEvent:(UIEvent *)event{
+    DLog(@"cancel");
     [self customTrackingEnd];
     [super cancelTrackingWithEvent:event];
 }
 
 -(BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    //DLog(@"✅识别到手势：%@ , %@", gestureRecognizer, gestureRecognizer.view);
+    DLog(@"✅识别到手势：%@ , %@", gestureRecognizer, gestureRecognizer.view);
     if (gestureRecognizer.view != self && ![gestureRecognizer.view isKindOfClass:[UIScrollView class]]) {
         return NO;
     }

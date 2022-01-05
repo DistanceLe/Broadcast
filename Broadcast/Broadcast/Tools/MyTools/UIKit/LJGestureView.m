@@ -105,11 +105,19 @@ static CGFloat const kDefaultDragEdge = 30;
 {
     self = [super init];
     if (self) {
-        
         [self initData];
     }
     return self;
 }
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initData];
+    }
+    return self;
+}
+
 
 - (void)dealloc {
     DLog(@"✅%@ dealloc", NSStringFromClass([self class]));
@@ -325,7 +333,8 @@ static CGFloat const kDefaultDragEdge = 30;
     DLog(@"结束Touch👌");
     //表示手势 没有被用到，需要手动结束手势
     if ((self.gestureType & LJGestureType_TwoFingleScale) > 0 ||
-        ((self.gestureType & LJGestureType_OneFingleDragScale) > 0 || (self.gestureType & LJGestureType_OneFingleDragMove) > 0)){
+        ((self.gestureType & LJGestureType_OneFingleDragScale) > 0 ||
+         (self.gestureType & LJGestureType_OneFingleDragMove) > 0)){
         [self endGesture];
     }
 }
@@ -601,7 +610,9 @@ static CGFloat const kDefaultDragEdge = 30;
     self.bottomWidth.constant = bigBorderWidth;
     self.rightWidth.constant = bigBorderWidth;
     
-    
+    if (self.positionChangeHandler) {
+        self.positionChangeHandler(self.center);
+    }
 //    if (self.frameRoom) {
 //        [self saveRoomSize];
 //    }

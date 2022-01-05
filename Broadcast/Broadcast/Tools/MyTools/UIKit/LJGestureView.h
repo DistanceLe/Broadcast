@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^centerPointBlock)(CGPoint centerPoint);
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(uint8_t, LJGestureType) {
@@ -39,7 +41,7 @@ typedef NS_ENUM(uint8_t, LJGestureType) {
 @property(nonatomic, assign)BOOL intoEdit;
 
 
-
+@property(nonatomic, strong)centerPointBlock positionChangeHandler;
 
 
 #pragma mark - ================ 区域专用  控制刷新 位置大小 ==================

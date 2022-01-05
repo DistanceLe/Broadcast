@@ -93,6 +93,9 @@
 		6AB5B37F2759C5E60031239E /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B32D2759C5E60031239E /* AFSecurityPolicy.m */; };
 		6AB5B3832759CBB40031239E /* LJGestureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B3812759CBB40031239E /* LJGestureView.m */; };
 		6AB5B3842759CBB40031239E /* LJGestureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AB5B3822759CBB40031239E /* LJGestureView.xib */; };
+		6AD1C6FE277AA0DA00FD3EB4 /* LJCircleEffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD1C6FD277AA0DA00FD3EB4 /* LJCircleEffectView.m */; };
+		6AD1C712277EB30E00FD3EB4 /* LJCmdData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD1C711277EB30E00FD3EB4 /* LJCmdData.m */; };
+		6AD1C715277ED4B800FD3EB4 /* LJNodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD1C714277ED4B800FD3EB4 /* LJNodeView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -258,6 +261,12 @@
 		6AB5B3802759CBB40031239E /* LJGestureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJGestureView.h; sourceTree = "<group>"; };
 		6AB5B3812759CBB40031239E /* LJGestureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJGestureView.m; sourceTree = "<group>"; };
 		6AB5B3822759CBB40031239E /* LJGestureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJGestureView.xib; sourceTree = "<group>"; };
+		6AD1C6FC277AA0DA00FD3EB4 /* LJCircleEffectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJCircleEffectView.h; sourceTree = "<group>"; };
+		6AD1C6FD277AA0DA00FD3EB4 /* LJCircleEffectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJCircleEffectView.m; sourceTree = "<group>"; };
+		6AD1C710277EB30E00FD3EB4 /* LJCmdData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJCmdData.h; sourceTree = "<group>"; };
+		6AD1C711277EB30E00FD3EB4 /* LJCmdData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJCmdData.m; sourceTree = "<group>"; };
+		6AD1C713277ED4B800FD3EB4 /* LJNodeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LJNodeView.h; sourceTree = "<group>"; };
+		6AD1C714277ED4B800FD3EB4 /* LJNodeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LJNodeView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +280,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A44BABE276B2514006F13F6 /* BroadcastData */ = {
+			isa = PBXGroup;
+			children = (
+				6AD1C710277EB30E00FD3EB4 /* LJCmdData.h */,
+				6AD1C711277EB30E00FD3EB4 /* LJCmdData.m */,
+				6AD1C713277ED4B800FD3EB4 /* LJNodeView.h */,
+				6AD1C714277ED4B800FD3EB4 /* LJNodeView.m */,
+				6AD1C6FC277AA0DA00FD3EB4 /* LJCircleEffectView.h */,
+				6AD1C6FD277AA0DA00FD3EB4 /* LJCircleEffectView.m */,
+			);
+			path = BroadcastData;
+			sourceTree = "<group>";
+		};
 		6AB5B20D2759C3540031239E = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +320,7 @@
 				6AB5B21D2759C3540031239E /* SceneDelegate.m */,
 				6AB5B21F2759C3540031239E /* ViewController.h */,
 				6AB5B2202759C3540031239E /* ViewController.m */,
+				6A44BABE276B2514006F13F6 /* BroadcastData */,
 				6AB5B2222759C3540031239E /* Main.storyboard */,
 				6AB5B2252759C3560031239E /* Assets.xcassets */,
 				6AB5B2272759C3560031239E /* LaunchScreen.storyboard */,
@@ -406,16 +429,16 @@
 		6AB5B2562759C5E50031239E /* PopView */ = {
 			isa = PBXGroup;
 			children = (
-				6AB5B2572759C5E50031239E /* LJPullDownView.h */,
-				6AB5B2582759C5E50031239E /* MBProgressHUD.m */,
-				6AB5B2592759C5E50031239E /* LJInfoAlert.h */,
-				6AB5B25A2759C5E50031239E /* LJSheetAlertView.h */,
 				6AB5B25B2759C5E50031239E /* LJAlertView.h */,
-				6AB5B25C2759C5E50031239E /* MBProgressHUD.h */,
-				6AB5B25D2759C5E50031239E /* LJPullDownView.m */,
-				6AB5B25E2759C5E50031239E /* LJSheetAlertView.m */,
-				6AB5B25F2759C5E50031239E /* LJInfoAlert.m */,
 				6AB5B2602759C5E50031239E /* LJAlertView.m */,
+				6AB5B2592759C5E50031239E /* LJInfoAlert.h */,
+				6AB5B25F2759C5E50031239E /* LJInfoAlert.m */,
+				6AB5B2572759C5E50031239E /* LJPullDownView.h */,
+				6AB5B25D2759C5E50031239E /* LJPullDownView.m */,
+				6AB5B25A2759C5E50031239E /* LJSheetAlertView.h */,
+				6AB5B25E2759C5E50031239E /* LJSheetAlertView.m */,
+				6AB5B25C2759C5E50031239E /* MBProgressHUD.h */,
+				6AB5B2582759C5E50031239E /* MBProgressHUD.m */,
 			);
 			path = PopView;
 			sourceTree = "<group>";
@@ -511,38 +534,38 @@
 		6AB5B2882759C5E50031239E /* Categorys */ = {
 			isa = PBXGroup;
 			children = (
+				6AB5B29D2759C5E50031239E /* Foundation+Log.m */,
 				6AB5B2892759C5E50031239E /* NSArray+LJ.h */,
+				6AB5B29E2759C5E50031239E /* NSArray+LJ.m */,
+				6AB5B2A72759C5E50031239E /* NSData+LJ.h */,
+				6AB5B2962759C5E50031239E /* NSData+LJ.m */,
 				6AB5B28A2759C5E50031239E /* NSDictionary+LJ.h */,
+				6AB5B29B2759C5E50031239E /* NSDictionary+LJ.m */,
 				6AB5B28B2759C5E50031239E /* NSNotificationCenter+LJ.h */,
-				6AB5B28C2759C5E50031239E /* UIImage+LJ.h */,
-				6AB5B28D2759C5E50031239E /* UITableView+LJ.h */,
+				6AB5B29A2759C5E50031239E /* NSNotificationCenter+LJ.m */,
+				6AB5B2A62759C5E50031239E /* NSObject+LJ.h */,
 				6AB5B28E2759C5E50031239E /* NSObject+LJ.m */,
-				6AB5B28F2759C5E50031239E /* UISwitch+LJ.h */,
-				6AB5B2902759C5E50031239E /* UILabel+LJ.h */,
 				6AB5B2912759C5E50031239E /* NSTimer+LJ.h */,
+				6AB5B2A32759C5E50031239E /* NSTimer+LJ.m */,
+				6AB5B29C2759C5E50031239E /* NullSafe.m */,
+				6AB5B2A22759C5E50031239E /* UIButton+LJ.h */,
 				6AB5B2922759C5E50031239E /* UIButton+LJ.m */,
+				6AB5B28C2759C5E50031239E /* UIImage+LJ.h */,
+				6AB5B2982759C5E50031239E /* UIImage+LJ.m */,
+				6AB5B2902759C5E50031239E /* UILabel+LJ.h */,
+				6AB5B2A42759C5E50031239E /* UILabel+LJ.m */,
+				6AB5B2972759C5E50031239E /* UISlider+LJ.h */,
+				6AB5B2A82759C5E50031239E /* UISlider+LJ.m */,
+				6AB5B28F2759C5E50031239E /* UISwitch+LJ.h */,
+				6AB5B2A52759C5E50031239E /* UISwitch+LJ.m */,
+				6AB5B28D2759C5E50031239E /* UITableView+LJ.h */,
+				6AB5B2992759C5E50031239E /* UITableView+LJ.m */,
+				6AB5B2A02759C5E50031239E /* UITableViewCell+LJ.h */,
 				6AB5B2932759C5E50031239E /* UITableViewCell+LJ.m */,
 				6AB5B2942759C5E50031239E /* UITextField+LJ.h */,
-				6AB5B2952759C5E50031239E /* UIView+LJ.h */,
-				6AB5B2962759C5E50031239E /* NSData+LJ.m */,
-				6AB5B2972759C5E50031239E /* UISlider+LJ.h */,
-				6AB5B2982759C5E50031239E /* UIImage+LJ.m */,
-				6AB5B2992759C5E50031239E /* UITableView+LJ.m */,
-				6AB5B29A2759C5E50031239E /* NSNotificationCenter+LJ.m */,
-				6AB5B29B2759C5E50031239E /* NSDictionary+LJ.m */,
-				6AB5B29C2759C5E50031239E /* NullSafe.m */,
-				6AB5B29D2759C5E50031239E /* Foundation+Log.m */,
-				6AB5B29E2759C5E50031239E /* NSArray+LJ.m */,
-				6AB5B29F2759C5E50031239E /* UIView+LJ.m */,
-				6AB5B2A02759C5E50031239E /* UITableViewCell+LJ.h */,
 				6AB5B2A12759C5E50031239E /* UITextField+LJ.m */,
-				6AB5B2A22759C5E50031239E /* UIButton+LJ.h */,
-				6AB5B2A32759C5E50031239E /* NSTimer+LJ.m */,
-				6AB5B2A42759C5E50031239E /* UILabel+LJ.m */,
-				6AB5B2A52759C5E50031239E /* UISwitch+LJ.m */,
-				6AB5B2A62759C5E50031239E /* NSObject+LJ.h */,
-				6AB5B2A72759C5E50031239E /* NSData+LJ.h */,
-				6AB5B2A82759C5E50031239E /* UISlider+LJ.m */,
+				6AB5B2952759C5E50031239E /* UIView+LJ.h */,
+				6AB5B29F2759C5E50031239E /* UIView+LJ.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -732,6 +755,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD1C712277EB30E00FD3EB4 /* LJCmdData.m in Sources */,
 				6AB5B35A2759C5E60031239E /* NSData+LJ.m in Sources */,
 				6AB5B3672759C5E60031239E /* UISlider+LJ.m in Sources */,
 				6AB5B3662759C5E60031239E /* UISwitch+LJ.m in Sources */,
@@ -748,6 +772,7 @@
 				6AB5B36A2759C5E60031239E /* SVRadialGradientLayer.m in Sources */,
 				6AB5B3582759C5E60031239E /* UIButton+LJ.m in Sources */,
 				6AB5B3392759C5E60031239E /* LJSlider.m in Sources */,
+				6AD1C6FE277AA0DA00FD3EB4 /* LJCircleEffectView.m in Sources */,
 				6AB5B3682759C5E60031239E /* UIApplication+TouchHints.m in Sources */,
 				6AB5B35F2759C5E60031239E /* NullSafe.m in Sources */,
 				6AB5B3762759C5E60031239E /* UIButton+AFNetworking.m in Sources */,
@@ -797,6 +822,7 @@
 				6AB5B3732759C5E60031239E /* UIRefreshControl+AFNetworking.m in Sources */,
 				6AB5B22C2759C3560031239E /* main.m in Sources */,
 				6AB5B33B2759C5E60031239E /* LJButton_Google.m in Sources */,
+				6AD1C715277ED4B800FD3EB4 /* LJNodeView.m in Sources */,
 				6AB5B33C2759C5E60031239E /* LJRSA.m in Sources */,
 				6AB5B3422759C5E60031239E /* LJLogRedirect.m in Sources */,
 				6AB5B21E2759C3540031239E /* SceneDelegate.m in Sources */,

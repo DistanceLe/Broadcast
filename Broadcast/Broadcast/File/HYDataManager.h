@@ -24,6 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign)CGFloat safeWidth;
 @property(nonatomic, assign)CGFloat safeHeight;
 
+
+@property(nonatomic, assign)NSInteger broadcastRange;
+@property(nonatomic, assign)NSInteger ttl;
+@property(nonatomic, assign)CGFloat speed;
+
 +(instancetype)shareManager;
 
 -(void)doOnAssembleThread:(void(^)(void))operate;
@@ -61,7 +66,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**  子视图 添加到 父视图， 子视图的frame = 父视图的bounds */
 -(void)setEqualFrameWithSubViw:(UIView*)subView toSuperView:(UIView*)superView;
 -(void)setEqualFrameWithSubViw:(UIView*)subView toSuperView:(UIView*)superView height:(CGFloat)height;
-
+-(void)setCenterFrameWithSubViw:(UIView*)subView toSuperView:(UIView*)superView width:(CGFloat)width height:(CGFloat)height;
 
 
 @end
