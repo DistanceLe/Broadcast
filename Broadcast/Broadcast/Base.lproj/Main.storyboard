@@ -32,7 +32,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="200" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Z-Og-MjT">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="10" maxValue="300" translatesAutoresizingMaskIntoConstraints="NO" id="Z1Z-Og-MjT">
                                                 <rect key="frame" x="64" y="5" width="317" height="31"/>
                                                 <connections>
                                                     <action selector="rangeSliderChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="dx3-IB-v2E"/>
@@ -156,13 +156,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T7s-TD-Kgh">
-                                                <rect key="frame" x="253" y="14.5" width="51" height="31"/>
+                                                <rect key="frame" x="200" y="14.5" width="51" height="31"/>
                                                 <connections>
                                                     <action selector="infoSwitchClick:" destination="BYZ-38-t0r" eventType="valueChanged" id="qWl-ui-PWs"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="显示信息" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vL7-EE-KFP">
-                                                <rect key="frame" x="199" y="22" width="54" height="16"/>
+                                                <rect key="frame" x="146" y="22" width="54" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -181,16 +181,24 @@
                                                     <action selector="cleanClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Uae-48-nE4"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjJ-ff-lOb">
+                                                <rect key="frame" x="269" y="21" width="40" height="18"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="Ww1-xB-JbP" firstAttribute="centerY" secondItem="0ZT-WO-Nnx" secondAttribute="centerY" id="KlX-xF-jId"/>
-                                            <constraint firstItem="vL7-EE-KFP" firstAttribute="leading" secondItem="Ww1-xB-JbP" secondAttribute="trailing" constant="88" id="MLz-tg-28o"/>
+                                            <constraint firstItem="yjJ-ff-lOb" firstAttribute="centerY" secondItem="0ZT-WO-Nnx" secondAttribute="centerY" id="Kxw-hB-SDf"/>
+                                            <constraint firstItem="vL7-EE-KFP" firstAttribute="leading" secondItem="Ww1-xB-JbP" secondAttribute="trailing" constant="35" id="MLz-tg-28o"/>
                                             <constraint firstAttribute="height" constant="60" id="O6r-i0-oDt"/>
                                             <constraint firstItem="T7s-TD-Kgh" firstAttribute="leading" secondItem="vL7-EE-KFP" secondAttribute="trailing" id="QN4-eW-hgr"/>
                                             <constraint firstItem="Pjy-Zm-pEi" firstAttribute="centerY" secondItem="0ZT-WO-Nnx" secondAttribute="centerY" id="Zoh-eK-4os"/>
                                             <constraint firstItem="vYi-Ry-eJ7" firstAttribute="leading" secondItem="0ZT-WO-Nnx" secondAttribute="leading" constant="8" id="cUj-K8-diw"/>
                                             <constraint firstAttribute="trailing" secondItem="Pjy-Zm-pEi" secondAttribute="trailing" constant="15" id="cnF-Sw-G3e"/>
+                                            <constraint firstItem="yjJ-ff-lOb" firstAttribute="leading" secondItem="T7s-TD-Kgh" secondAttribute="trailing" constant="20" id="g70-ql-dP6"/>
                                             <constraint firstItem="Ww1-xB-JbP" firstAttribute="leading" secondItem="vYi-Ry-eJ7" secondAttribute="trailing" id="gBO-h9-c4g"/>
                                             <constraint firstItem="T7s-TD-Kgh" firstAttribute="centerY" secondItem="0ZT-WO-Nnx" secondAttribute="centerY" id="nJd-Wd-RcF"/>
                                             <constraint firstItem="vYi-Ry-eJ7" firstAttribute="centerY" secondItem="0ZT-WO-Nnx" secondAttribute="centerY" id="rEk-X4-Wrm"/>
@@ -235,6 +243,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countLabel" destination="yjJ-ff-lOb" id="4D8-cw-y6P"/>
                         <outlet property="effectBackView" destination="rZZ-E1-mZo" id="FGE-PZ-gjc"/>
                         <outlet property="infoSwitch" destination="T7s-TD-Kgh" id="Eac-7o-V0y"/>
                         <outlet property="rangeSlider" destination="Z1Z-Og-MjT" id="qeI-vB-uQ2"/>

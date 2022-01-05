@@ -12,6 +12,7 @@
 
 @property(nonatomic, assign)NSInteger currentCmdID;
 
+@property(nonatomic, strong)UIView* redPoint;
 @property(nonatomic, strong)UILabel* infoLabel;
 
 @end
@@ -37,9 +38,10 @@
 -(void)initUI{
     
     UIView* subCenterView = [[UIView alloc]init];
-    subCenterView.backgroundColor = [UIColor redColor];
-    subCenterView.layer.cornerRadius = 2.5;
-    [kDataManager setCenterFrameWithSubViw:subCenterView toSuperView:self width:5 height:5];
+    self.redPoint = subCenterView;
+    subCenterView.backgroundColor = [UIColor greenColor];
+    subCenterView.layer.cornerRadius = 4;
+    [kDataManager setCenterFrameWithSubViw:subCenterView toSuperView:self width:8 height:8];
     
     
     UILabel* infoLabel = [[UILabel alloc]init];
@@ -89,6 +91,7 @@
         self.receiptCount = 0;
         self.sendCount = 0;
         self.infoLabel.text = @"";
+        self.redPoint.backgroundColor = [UIColor greenColor];
     }];
 }
 - (void)dealloc{
@@ -108,6 +111,7 @@
     DLog(@"收到一条延迟 指令: %.2f", delay);
     self.receiptCount ++;
     self.infoLabel.text = [NSString stringWithFormat:@"收%ld发%ld", self.receiptCount, self.sendCount];
+    self.redPoint.backgroundColor = kRGBColor((self.receiptCount<100?(int)(self.receiptCount*2.55):255), 0, (self.receiptCount<100?255-(int)(self.receiptCount*2.55):0), 1);
     if (self.currentCmdID == cmd.cmdID || [cmd.addressOnTheWay containsObject:@(self.nodeAddress)] ||
         cmd.ttl <= 1) {
         return;

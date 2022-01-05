@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UISwitch *rangeSwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *infoSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
 
 @property (weak, nonatomic) IBOutlet LJCircleEffectView *effectBackView;
@@ -39,13 +40,14 @@
     self.effectBackView.circleEffectColor = [UIColor redColor];
     
     @weakify(self);
-    [self.effectBackView addLongGestureTime:0.7 Handler:^(UILongPressGestureRecognizer *longGesture, UIView *itself) {
+    [self.effectBackView addLongGestureTime:0.3 Handler:^(UILongPressGestureRecognizer *longGesture, UIView *itself) {
         @strongify(self);
         
         if (longGesture.state == UIGestureRecognizerStateBegan) {
             CGPoint begingPoint = [longGesture locationInView:self.effectBackView];
             [self addNodeToPoint:begingPoint nodeID:self.nextNodeID];
             [self.nodesArray addObject:@[@(self.nextNodeID), @(begingPoint.x), @(begingPoint.y)]];
+            self.countLabel.text = @(self.nodesArray.count).stringValue;
             [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:nodesKey];
             self.nextNodeID ++;
             [[NSUserDefaults standardUserDefaults]setObject:@(self.nextNodeID) forKey:nodeIdKey];
@@ -104,6 +106,7 @@
         self.nodesArray = [NSMutableArray arrayWithArray:nodes];
     }
     
+    self.countLabel.text = @(self.nodesArray.count).stringValue;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         for (NSArray* nodeValue in self.nodesArray) {
             NSInteger nodeID = [nodeValue.firstObject integerValue];
@@ -181,6 +184,7 @@
                 NSInteger nodeID = [nodeValue.firstObject integerValue];
                 if (nodeID == subNodeView.nodeAddress) {
                     [self.nodesArray removeObject:nodeValue];
+                    self.countLabel.text = @(self.nodesArray.count).stringValue;
                     [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:nodesKey];
                     break;
                 }

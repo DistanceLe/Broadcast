@@ -187,7 +187,7 @@ static CGFloat const kDefaultDragEdge = 30;
         
         self.moveImageView.hidden = NO;
         
-        self.layer.borderColor = [UIColor whiteColor].CGColor;
+        self.layer.borderColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.08].CGColor;
     }else{
         self.leftTopImageView.hidden = YES;
         self.leftBottomImageView.hidden = YES;
