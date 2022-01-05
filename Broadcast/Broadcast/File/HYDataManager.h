@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign)NSInteger ttl;
 @property(nonatomic, assign)CGFloat speed;
 
+@property(nonatomic, assign)BOOL rangeShow;
+@property(nonatomic, assign)BOOL infoShow;
+
 +(instancetype)shareManager;
 
 -(void)doOnAssembleThread:(void(^)(void))operate;
@@ -68,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setEqualFrameWithSubViw:(UIView*)subView toSuperView:(UIView*)superView height:(CGFloat)height;
 -(void)setCenterFrameWithSubViw:(UIView*)subView toSuperView:(UIView*)superView width:(CGFloat)width height:(CGFloat)height;
 
-
+-(void)setLabelCenterFrameWithSubViw:(UIView*)subView toSuperView:(UIView*)superView width:(CGFloat)width center:(CGFloat)center;
 @end
 
 NS_ASSUME_NONNULL_END

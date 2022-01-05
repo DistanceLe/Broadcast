@@ -28,7 +28,17 @@ static NSString* const sliderTouchEnd = @"sliderTouchEnd";
 
 
 
+static NSString* const nodeIdKey = @"nodeID";
+static NSString* const nodesKey = @"nodes";
 
+static NSString* const rangeKey = @"rangeKey";
+static NSString* const ttlKey = @"ttlKey";
+static NSString* const speedKey = @"speedKey";
+
+static NSString* const rangeChange = @"rangeChange";
+static NSString* const rangeShowChange = @"rangeShowChange";
+static NSString* const infoShowChange = @"infoShowChange";
+static NSString* const cleanInfo = @"cleanInfo";
 
 #endif /* ConstString_h */
 

@@ -14,6 +14,14 @@
 @property (weak, nonatomic) IBOutlet UISlider *ttlSlider;
 @property (weak, nonatomic) IBOutlet UISlider *speedSlider;
 
+@property (weak, nonatomic) IBOutlet UILabel *rangeValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *ttlValueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *speedValueLabel;
+
+@property (weak, nonatomic) IBOutlet UISwitch *rangeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *infoSwitch;
+
+
 @property (weak, nonatomic) IBOutlet LJCircleEffectView *effectBackView;
 
 @property (nonatomic, assign)NSInteger nextNodeID;
@@ -27,46 +35,69 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
-    
-    
-//    LJButton_Google* button = [[LJButton_Google alloc]init];
-//    button.circleEffectTime = 4;
-//    button.frame = CGRectMake(50, 100, 500, 400);
-//    button.backgroundColor = [UIColor orangeColor];
-//    [self.view addSubview:button];
-    
+
     self.effectBackView.circleEffectColor = [UIColor redColor];
-    self.effectBackView.circleEffectTime = kDataManager.speed;
-    self.effectBackView.endRadius = kDataManager.broadcastRange;
-//    self.effectBackView.beginRadius = 10;
     
     @weakify(self);
-    [self.effectBackView addLongGestureTime:1.3 Handler:^(UILongPressGestureRecognizer *longGesture, UIView *itself) {
+    [self.effectBackView addLongGestureTime:0.7 Handler:^(UILongPressGestureRecognizer *longGesture, UIView *itself) {
         @strongify(self);
         
         if (longGesture.state == UIGestureRecognizerStateBegan) {
             CGPoint begingPoint = [longGesture locationInView:self.effectBackView];
             [self addNodeToPoint:begingPoint nodeID:self.nextNodeID];
             [self.nodesArray addObject:@[@(self.nextNodeID), @(begingPoint.x), @(begingPoint.y)]];
-            [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:@"nodes"];
+            [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:nodesKey];
             self.nextNodeID ++;
-            [[NSUserDefaults standardUserDefaults]setObject:@(self.nextNodeID) forKey:@"nodeID"];
+            [[NSUserDefaults standardUserDefaults]setObject:@(self.nextNodeID) forKey:nodeIdKey];
         }
     }];
     
     
+    NSNumber* range = [[NSUserDefaults standardUserDefaults]objectForKey:rangeKey];
+    if (range != nil) {
+        kDataManager.broadcastRange = range.integerValue;
+    }
+    NSNumber* ttl = [[NSUserDefaults standardUserDefaults]objectForKey:ttlKey];
+    if (ttl != nil) {
+        kDataManager.ttl = ttl.integerValue;
+    }
+    NSNumber* speed = [[NSUserDefaults standardUserDefaults]objectForKey:speedKey];
+    if (speed != nil) {
+        kDataManager.speed = speed.floatValue;
+    }
     
-    NSNumber* nodeID = [[NSUserDefaults standardUserDefaults]objectForKey:@"nodeID"];
+    NSNumber* rangeShow = [[NSUserDefaults standardUserDefaults]objectForKey:rangeShowChange];
+    if (rangeShow != nil) {
+        kDataManager.rangeShow = rangeShow.boolValue;
+    }
+    NSNumber* infoShow = [[NSUserDefaults standardUserDefaults]objectForKey:infoShowChange];
+    if (infoShow != nil) {
+        kDataManager.infoShow = infoShow.boolValue;
+    }
+    
+    self.effectBackView.circleEffectTime = kDataManager.speed;
+    self.effectBackView.endRadius = kDataManager.broadcastRange;
+    
+    self.rangeValueLabel.text = @(kDataManager.broadcastRange).stringValue;
+    self.ttlValueLabel.text = @(kDataManager.ttl).stringValue;
+    self.speedValueLabel.text = [NSString stringWithFormat:@"%.2f", kDataManager.speed];
+    
+    self.rangeSwitch.on = @(kDataManager.rangeShow).boolValue;
+    self.infoSwitch.on = @(kDataManager.infoShow).boolValue;
+    
+    self.rangeSlider.value = kDataManager.broadcastRange;
+    self.ttlSlider.value = kDataManager.ttl;
+    self.speedSlider.value = kDataManager.speed;
+    
+    NSNumber* nodeID = [[NSUserDefaults standardUserDefaults]objectForKey:nodeIdKey];
     if (nodeID == nil) {
         self.nextNodeID = 1;
-        [[NSUserDefaults standardUserDefaults]setObject:@(self.nextNodeID) forKey:@"nodeID"];
+        [[NSUserDefaults standardUserDefaults]setObject:@(self.nextNodeID) forKey:nodeIdKey];
     }else{
         self.nextNodeID = nodeID.integerValue;
     }
     
-    NSArray* nodes = [[NSUserDefaults standardUserDefaults]objectForKey:@"nodes"];
+    NSArray* nodes = [[NSUserDefaults standardUserDefaults]objectForKey:nodesKey];
     if (nodes == nil) {
         self.nodesArray = [NSMutableArray array];
     }else{
@@ -84,21 +115,44 @@
             }
         }
     });
-    
 }
 - (IBAction)rangeSliderChange:(UISlider *)sender {
-    
-    
+    kDataManager.broadcastRange = sender.value;
+    self.effectBackView.endRadius = kDataManager.broadcastRange;
+    self.rangeValueLabel.text = @(kDataManager.broadcastRange).stringValue;
+    [[NSNotificationCenter defaultCenter]postNotificationName:rangeChange object:nil];
+    [[NSUserDefaults standardUserDefaults]setObject:@(kDataManager.broadcastRange) forKey:rangeKey];
 }
 
 - (IBAction)ttlSliderChange:(UISlider *)sender {
-    
-    
+    kDataManager.ttl = sender.value;
+    self.ttlValueLabel.text = @(kDataManager.ttl).stringValue;
+    [[NSUserDefaults standardUserDefaults]setObject:@(kDataManager.ttl) forKey:ttlKey];
 }
 
 - (IBAction)speedSliderChange:(UISlider *)sender {
     
+    kDataManager.speed = sender.value;
+    self.effectBackView.circleEffectTime = kDataManager.speed;
+    self.speedValueLabel.text = [NSString stringWithFormat:@"%.2f", kDataManager.speed];
+    [[NSUserDefaults standardUserDefaults]setObject:@(kDataManager.speed) forKey:speedKey];
+}
+
+
+- (IBAction)rangeSwitchClick:(UISwitch *)sender {
     
+    kDataManager.rangeShow = sender.isOn;
+    [[NSNotificationCenter defaultCenter]postNotificationName:rangeShowChange object:nil];
+    [[NSUserDefaults standardUserDefaults]setObject:@(kDataManager.rangeShow) forKey:rangeShowChange];
+}
+- (IBAction)infoSwitchClick:(UISwitch *)sender {
+    
+    kDataManager.infoShow = sender.isOn;
+    [[NSNotificationCenter defaultCenter]postNotificationName:infoShowChange object:nil];
+    [[NSUserDefaults standardUserDefaults]setObject:@(kDataManager.infoShow) forKey:infoShowChange];
+}
+- (IBAction)cleanClick:(UIButton *)sender {
+    [[NSNotificationCenter defaultCenter]postNotificationName:cleanInfo object:nil];
 }
 
 
@@ -127,7 +181,7 @@
                 NSInteger nodeID = [nodeValue.firstObject integerValue];
                 if (nodeID == subNodeView.nodeAddress) {
                     [self.nodesArray removeObject:nodeValue];
-                    [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:@"nodes"];
+                    [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:nodesKey];
                     break;
                 }
             }
@@ -142,7 +196,7 @@
             NSInteger nodeID = [nodeValue.firstObject integerValue];
             if (nodeID == subNodeView.nodeAddress) {
                 [self.nodesArray replaceObjectAtIndex:[self.nodesArray indexOfObject:nodeValue] withObject:newPosition];
-                [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:@"nodes"];
+                [[NSUserDefaults standardUserDefaults]setObject:self.nodesArray forKey:nodesKey];
                 break;
             }
         }

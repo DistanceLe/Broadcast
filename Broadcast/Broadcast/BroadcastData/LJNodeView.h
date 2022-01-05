@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LJNodeView : LJGestureView
 
 @property(nonatomic, assign)NSInteger nodeAddress;
-//@property(nonatomic, assign)NSInteger range;
 
 @property(nonatomic, assign)NSInteger receiptCount;
 @property(nonatomic, assign)NSInteger sendCount;

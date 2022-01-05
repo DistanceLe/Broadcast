@@ -34,6 +34,9 @@
         shareManager.broadcastRange = 100;
         shareManager.ttl = 20;
         
+        shareManager.rangeShow = YES;
+        shareManager.infoShow = NO;
+        
         shareManager.BLEQueue = dispatch_queue_create("com.lijie.BLE", DISPATCH_QUEUE_SERIAL);
         shareManager.assembleQueue = dispatch_queue_create("com.lijie.assemble", DISPATCH_QUEUE_SERIAL);
     });
@@ -451,11 +454,23 @@
     
     
     NSLayoutConstraint *heighValue = [NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:height];
-    NSLayoutConstraint *widthValue = [NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:height];
+    NSLayoutConstraint *widthValue = [NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:width];
     [subView addConstraint:widthValue];
     [subView addConstraint:heighValue];
 }
-
+-(void)setLabelCenterFrameWithSubViw:(UIView*)subView toSuperView:(UIView*)superView width:(CGFloat)width center:(CGFloat)center{
+    subView.translatesAutoresizingMaskIntoConstraints = NO;
+    [superView addSubview:subView];
+    
+    NSLayoutConstraint *x = [NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:superView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    NSLayoutConstraint *y = [NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:superView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:center];
+    
+    [superView addConstraints:@[x, y]];
+    
+    
+    NSLayoutConstraint *widthValue = [NSLayoutConstraint constraintWithItem:subView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:width];
+    [subView addConstraint:widthValue];
+}
 
 @end
 
