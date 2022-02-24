@@ -40,8 +40,8 @@
     UIView* subCenterView = [[UIView alloc]init];
     self.redPoint = subCenterView;
     subCenterView.backgroundColor = [UIColor greenColor];
-    subCenterView.layer.cornerRadius = 4;
-    [kDataManager setCenterFrameWithSubViw:subCenterView toSuperView:self width:8 height:8];
+    subCenterView.layer.cornerRadius = 5;
+    [kDataManager setCenterFrameWithSubViw:subCenterView toSuperView:self width:10 height:10];
     
     
     UILabel* infoLabel = [[UILabel alloc]init];

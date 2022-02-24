@@ -179,7 +179,7 @@
     [subNodeView addMultipleTap:3 gestureHandler:^(UITapGestureRecognizer *tapGesture, UIView *itself) {
         @strongify(self);
         @strongify(subNodeView);
-        if (tapGesture.state == UIGestureRecognizerStateBegan) {
+//        if (tapGesture.state == UIGestureRecognizerStateBegan) {
             for (NSArray* nodeValue in self.nodesArray) {
                 NSInteger nodeID = [nodeValue.firstObject integerValue];
                 if (nodeID == subNodeView.nodeAddress) {
@@ -190,7 +190,7 @@
                 }
             }
             [subNodeView removeFromSuperview];
-        }
+//        }
     }];
     [subNodeView setPositionChangeHandler:^(CGPoint centerPoint) {
         @strongify(self);
